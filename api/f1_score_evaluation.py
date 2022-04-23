@@ -18,7 +18,7 @@ import sys
 
 def getF1(filename):
     try:
-        y_true = pd.read_csv(f'api/submissions/true_prediction.csv', index_col = None, header = None)
+        y_true = pd.read_csv(f'api/submissions/target_with_us.csv', index_col = None, header = None)
 
         y_pred = pd.read_csv(f'media/{filename}', index_col = None, header = None)
 

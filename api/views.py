@@ -18,12 +18,15 @@ def handleFile(request, filename):
 
 @csrf_exempt
 def my_api(request):
-    if request.method == "POST":
-        data = request.FILES
-        filename = request.FILES["file"].name
-        handleFile(request, filename)
-        score = getF1(request.FILES["file"].name)
+    try:
+        if request.method == "POST":
+            data = request.FILES
+            filename = request.FILES["file"].name
+            handleFile(request, filename)
+            score = getF1(request.FILES["file"].name)
 
-        return JsonResponse({'score': score})
-    else:
+            return JsonResponse({'score': score})
+        else:
+            return HttpResponse('404')
+    except:
         return HttpResponse('404')
